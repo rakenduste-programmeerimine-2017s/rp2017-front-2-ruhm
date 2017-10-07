@@ -7,7 +7,7 @@ const List = (props) => {
 
   const listItems = words.map(word => {
     return (
-      <li key={word._id} >{word.name}</li>
+      <li key={word._id}>{word.name}</li>
     )
   })
 
