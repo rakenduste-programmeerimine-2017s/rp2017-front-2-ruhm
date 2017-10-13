@@ -28,11 +28,15 @@ class GamesForm extends React.Component {
         })
       })
       .catch(error => {
-        console.error(error)
+        let errorMessage = error.data.message
 
-        let errorMessage = error.data.errors.name
-          ? error.data.errors.name.msg
-          : error.data.errors.msg
+        errorMessage = error.data.message
+          ? error.data.message
+          : error.data.errors.player
+            ? error.data.errors.player.msg
+            : error.data.errors.msg
+
+        console.log(errorMessage)
 
         this.setState({
           error: errorMessage,
