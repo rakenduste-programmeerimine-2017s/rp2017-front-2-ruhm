@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getWords } from './WordsActions'
+import { getWords, saveWord } from './WordsActions'
 import Words from './Words'
 
 const mapStateToProps = state => ({
@@ -7,4 +7,4 @@ const mapStateToProps = state => ({
   form: state.words.form
 })
 
-export default connect(mapStateToProps, { getWords })(Words)
+export default connect(mapStateToProps, { getWords, saveWord })(Words)

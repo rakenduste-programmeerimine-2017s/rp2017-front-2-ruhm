@@ -1,5 +1,4 @@
 import React from 'react'
-import Api from '../../utils/api'
 
 import WordsForm from './WordsForm'
 import GamesForm from './GamesForm'
@@ -13,14 +12,15 @@ class Words extends React.Component {
 
   render () {
     console.log('RENDER WORDS')
+    console.log(this.props)
 
-    const { getWords, list: { data }, form } = this.props
+    const { getWords, saveWord, list: { data }, form } = this.props
 
     return (
       <div id='words'>
         <h1>Words</h1>
         <br />
-        <WordsForm getWords={getWords} />
+        <WordsForm saveWord={saveWord} form={form} />
         <br />
         <GamesForm />
         <br />

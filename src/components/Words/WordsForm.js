@@ -1,59 +1,29 @@
 import React from 'react'
-import Api from '../../utils/api'
 
 class WordsForm extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
-    this.saveWord = this.saveWord.bind(this)
+    this.formSubmit = this.formSubmit.bind(this)
   }
 
-  saveWord (event) {
+  formSubmit (event) {
     event.preventDefault()
 
     const name = document.querySelector('input#name').value
-
-    Api('POST', '/words', {
-      data: { name }
-    })
-      .then(results => {
-        console.log(results)
-
-        const { word } = results
-
-        this.setState({
-          msg: 'Word saved successfully ' + word.name,
-          error: false
-        }, () => {
-          // callback when setState is ready
-          this.props.getWords()
-        })
-      })
-      .catch(error => {
-        console.error(error)
-
-        let errorMessage = error.data.errors.name
-          ? error.data.errors.name.msg
-          : error.data.errors.msg
-
-        this.setState({
-          error: errorMessage,
-          msg: false
-        })
-      })
+    this.props.saveWord(name)
   }
 
   render () {
     console.log('RENDER FORM')
 
-    const { msg, error } = this.state
+    const { form: { message, error, loading } } = this.props
 
     return (
       <div className='word-form'>
-        <p>{msg || error}</p>
-        <form onSubmit={this.saveWord}>
+        <p>{message || error}</p>
+        <form onSubmit={this.formSubmit}>
           <input id='name' type='text' />
-          <input type='submit' value='save' />
+          <input disabled={loading} type='submit' value='save' />
         </form>
       </div>
     )
