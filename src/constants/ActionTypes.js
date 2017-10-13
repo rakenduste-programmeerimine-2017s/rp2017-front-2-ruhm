@@ -1,0 +1,3 @@
+export const WORDS_LOADED = 'WORDS_LOADED'
+export const WORDS_SAVE_STARTED = 'WORDS_SAVE_STARTED'
+export const WORDS_SAVED = 'WORDS_SAVED'
