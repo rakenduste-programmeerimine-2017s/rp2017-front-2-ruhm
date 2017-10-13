@@ -4,7 +4,6 @@ import Api from '../../utils/api'
 class WordsForm extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {}
     this.saveWord = this.saveWord.bind(this)
   }
@@ -25,6 +24,9 @@ class WordsForm extends React.Component {
         this.setState({
           msg: 'Word saved successfully ' + word.name,
           error: false
+        }, () => {
+          // callback when setState is ready
+          this.props.getWords()
         })
       })
       .catch(error => {
