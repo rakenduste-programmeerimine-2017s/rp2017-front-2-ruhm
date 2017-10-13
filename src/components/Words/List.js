@@ -1,6 +1,8 @@
 import React from 'react'
 
 const List = (props) => {
+  console.log('RENDER LIST')
+
   const { words } = props
 
   if (!words.length) return null
