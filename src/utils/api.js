@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BASE_URL = '/api'
 
-export default (method, url, query) => {
+export default function (method, url, query) {
   return axios
     .request({
       method: method,

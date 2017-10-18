@@ -12,16 +12,14 @@ import './app.scss'
 import store from './store'
 
 render(
-  <Provider store={store}>
-    <BrowserRouter history={browserHistory}>
-      <div id='content-wrapper'>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/words' component={Words} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  </Provider>,
+  <BrowserRouter history={browserHistory}>
+    <div id='content-wrapper'>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/words' component={Words} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
+  </BrowserRouter>,
   document.querySelector('#main')
 )

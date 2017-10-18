@@ -1,10 +1,11 @@
-import { connect } from 'react-redux'
-import { getWords, saveWord } from './WordsActions'
-import Words from './Words'
+import React from 'react'
 
-const mapStateToProps = state => ({
-  list: state.words.list,
-  form: state.words.form
-})
+const Words = () => {
+  return (
+    <div id='words'>
+      <h1>Words</h1>
+    </div>
+  )
+}
 
-export default connect(mapStateToProps, { getWords, saveWord })(Words)
+export default Words

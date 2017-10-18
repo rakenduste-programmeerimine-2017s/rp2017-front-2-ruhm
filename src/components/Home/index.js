@@ -6,7 +6,7 @@ import './Home.scss'
 const Home = () => {
   return (
     <div id='home'>
-      <h1>Welcome!</h1>
+      <h1>Welcome</h1>
       <Link to='/words'>Words</Link>
     </div>
   )
