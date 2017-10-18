@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { Route, Switch, BrowserRouter, browserHistory } from 'react-router-dom'
 
 import Home from './components/Home'
+import Words from './components/Words'
 import NotFound from './components/NotFound'
 
 import './app.scss'
@@ -12,6 +13,7 @@ render(
     <div id='content-wrapper'>
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/words' component={Words} />
         <Route component={NotFound} />
       </Switch>
     </div>
