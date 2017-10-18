@@ -8,6 +8,7 @@ import List from '../List/List'
 class Words extends React.Component {
 	constructor (props) {
 		super(props)
+		this.state = { words: [] }
 	}
 
 	componentDidMount () {
@@ -15,6 +16,10 @@ class Words extends React.Component {
 		Api('GET', '/words', {})
 		.then( results => {
 			console.log(results)
+			const { words } = results
+			this.setState({
+				words
+			})
 		})
 		.catch( error => {
 			console.error(error)
@@ -22,15 +27,17 @@ class Words extends React.Component {
 	}
 
 	render () {
-  	return (
-	    <div id='words'>
-	      <h1>Words</h1>
-	      <Form />
-	      <br />
-	    <List />
-      </div>
-    )
-  }
+		console.log('renderdatud')
+		const { words } = this.state
+		return (
+			<div id='words'>
+				<h1>Words</h1>
+				<Form />
+				<br />
+				<List words={words}/>
+			</div>
+		)
+	}
 
 }
 
