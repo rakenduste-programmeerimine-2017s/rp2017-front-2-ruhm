@@ -14,7 +14,7 @@ class Words extends React.Component {
     console.log('RENDER WORDS')
     console.log(this.props)
 
-    const { getWords, saveWord, list: { data }, form } = this.props
+    const { saveWord, list: { data }, form } = this.props
 
     return (
       <div id='words'>
