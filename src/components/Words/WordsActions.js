@@ -30,9 +30,11 @@ export const saveWord = (name) => dispatch => {
     .catch(error => {
       console.error(error)
 
-      let errorMessage = error.data.errors.name
-        ? error.data.errors.name.msg
-        : error.data.errors.msg
+      let errorMessage = error.data.message 
+        ? error.data.message
+        : error.data.errors.name
+          ? error.data.errors.name.msg
+          : error.data.errors.msg
 
       dispatch({ type: types.WORDS_SAVED, error: errorMessage })
     })
