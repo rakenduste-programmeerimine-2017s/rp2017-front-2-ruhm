@@ -1,8 +1,11 @@
 import axios from 'axios'
+import NProgress from 'nprogress'
+import '../../node_modules/nprogress/nprogress.css'
 
 const BASE_URL = '/api'
 
 export default (method, url, query) => {
+  NProgress.start()
   return axios
     .request({
       method: method,
@@ -12,9 +15,11 @@ export default (method, url, query) => {
       params: query.params || {} // url params
     })
     .then(response => {
+      NProgress.done()
       return Promise.resolve(response.data)
     })
     .catch(err => {
+      NProgress.done()
       console.error(err)
       return Promise.reject(err.response)
     })

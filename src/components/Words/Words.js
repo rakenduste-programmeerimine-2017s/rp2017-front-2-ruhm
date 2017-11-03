@@ -20,7 +20,7 @@ class Words extends React.Component {
       <div id='words'>
         <h1>Words</h1>
         <br />
-        <WordsForm saveWord={saveWord} form={form} />
+        <WordsForm saveWord={saveWord} wordsForm={form} />
         <br />
         <GamesForm />
         <br />

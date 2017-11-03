@@ -1,9 +1,20 @@
 import React from 'react'
+import { Button, Form, message } from 'antd'
 
 class WordsForm extends React.Component {
   constructor (props) {
     super(props)
     this.formSubmit = this.formSubmit.bind(this)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log(nextProps.wordsForm)
+    if (nextProps.wordsForm.message && nextProps.wordsForm.message !== this.props.wordsForm.message) {
+      message.success(nextProps.wordsForm.message)
+    }
+    if (nextProps.wordsForm.error && nextProps.wordsForm.error !== this.props.wordsForm.error) {
+      message.error(nextProps.wordsForm.error)
+    }
   }
 
   formSubmit (event) {
@@ -16,18 +27,18 @@ class WordsForm extends React.Component {
   render () {
     console.log('RENDER FORM')
 
-    const { form: { message, error, loading } } = this.props
-
+    const { wordsForm, wordsForm: { error, loading } } = this.props
+    console.log(this.props.form)
     return (
       <div className='word-form'>
-        <p>{message || error}</p>
+        <p>{wordsForm.message || error}</p>
         <form onSubmit={this.formSubmit}>
           <input id='name' type='text' />
-          <input disabled={loading} type='submit' value='save' />
+          <Button loading={loading} htmlType='submit'>Save</Button>
         </form>
       </div>
     )
   }
 }
 
-export default WordsForm
+export default Form.create()(WordsForm)
